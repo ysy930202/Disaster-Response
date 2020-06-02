@@ -95,13 +95,7 @@ python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl
 This will use cleaned data to train the model, improve the model with grid search and saved the model to a pickle file (_classifer.pkl_).
 
 _classifier.pkl_ already exists but the above command will still run and replace the file will same information.
-
-
-<a id='acc'></a>
-
-**_Screenshot 5_**
-
-![train_classifier_2.jpg](img/train_classifier_2.jpg)
+up
 
 <a id='starting'></a>
 
