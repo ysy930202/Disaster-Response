@@ -15,6 +15,15 @@ from sqlalchemy import create_engine
 
 
 def load_data(database_filepath):
+    '''
+    INPUT:
+    database_filepath: the database name in sqlite
+    
+    OUTPUT:
+    X: features used in model
+    Y: Response variable in model
+    '''
+    
     table_name = 'Disasters'
     engine = create_engine('sqlite:///{}'.format(database_filepath))
     df = pd.read_sql_table(table_name, engine)
@@ -26,6 +35,10 @@ def load_data(database_filepath):
 
 
 def tokenize(text):
+    '''
+    Tokenize the text
+    '''
+    
     text = re.sub(r"[^a-zA-Z0-9]", " ", text.lower())
     words = word_tokenize(text)
     stopwords_ = stopwords.words("english")
@@ -58,6 +71,9 @@ def build_model():
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
+    '''
+    Use test dataset (X_test, Y_test) to test the model and retrun accuracy score
+    '''
     y_pred = model.predict(X_text)
     print(classification_report(y_pred, Y_test.values, target_names=category_names))
     print('Accuracy Score: {}'.format(np.mean(Y_test.values == y_pred)))
